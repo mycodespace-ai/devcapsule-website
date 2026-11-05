@@ -13,5 +13,5 @@ description: DevCapsule release notes, one page per final release, newest first.
     <li><a href="{{ r.url | url }}">{{ r.title }}</a>{% if r.version == site.current.version %} <span class="version-status">current</span>{% endif %}{% if r.releasedLabel %} <span class="version-status">{{ r.releasedLabel }}</span>{% endif %}<p>{{ r.description }}</p></li>
     {% endfor %}
   </ul>
-  {% if not site.releases.length %}<p class="versions-hint">No release notes are published yet. See <a href="https://github.com/ccozianu/devcapsule/releases">the releases on GitHub</a>.</p>{% endif %}
+  {% if not site.releases.length %}<p class="versions-hint">No release notes are published yet. See <a href="https://github.com/mycodespace-ai/devcapsule/releases">the releases on GitHub</a>.</p>{% endif %}
 </div>

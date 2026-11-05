@@ -10,6 +10,25 @@ debugger recording (`eclipse-hello-time-debug.webm`) instead of the earlier
 IntelliJ persistence session. Delivery: SSH push, owner merges PRs and runs the
 publication workflows.
 
+## The repositories move to the `mycodespace-ai` organization (2026-11-05)
+
+- DevCapsule lives in `mycodespace-ai/devcapsule` from 2026-11-05 and this
+  repository was transferred to `mycodespace-ai/devcapsule-website` the same
+  day. The personal `ccozianu/devcapsule` still exists, migrated branch by
+  branch rather than transferred, so it is not a redirect: a candidate built
+  by the organization's Website action never appears there.
+- `scripts/candidate.mjs`, `scripts/contract.mjs`, `scripts/promote.mjs` and
+  `scripts/fetch-content.mjs` now name the organization's repository, as do
+  the pages, the tests, the fixture and the records. The publishing guide
+  names `mycodespace-ai/devcapsule-website` and the Pages host
+  `mycodespace-ai.github.io`, which both DNS records point at since
+  2026-11-05. Nothing else in the publishing chain changes: the Website
+  action in DevCapsule builds, deploys to the test domain and publishes the
+  candidate; this repository's publish workflow promotes it.
+- Validated with `npm test` (23 passed), `npm run build` and `npm run check`
+  (253 HTML pages, 21194 local links/assets/anchors) against the
+  organization's `main`.
+
 ## Landing-page WebVTT caption alignment (2026-10-22)
 
 - Replaced the leftover 4-cue IntelliJ IDEA persistence captions in
@@ -146,7 +165,7 @@ to the system, plus one contrast defect the audit caught and this branch
 fixes (the "current" switcher label now inherits the ink colour). Hero
 screenshots of Solarized light, Gruvbox dark, Nord and Catppuccin latte were
 inspected by eye. Compare link:
-[publication…colour-schemes](https://github.com/ccozianu/devcapsule-website/compare/publication...colour-schemes).
+[publication…colour-schemes](https://github.com/mycodespace-ai/devcapsule-website/compare/publication...colour-schemes).
 
 Second review, same day: the owner chose Catppuccin latte as the default
 and reported the drop-down's options rendering white on white in the dark
@@ -579,7 +598,7 @@ owner's cross-repository exception; the two repositories share no mailbox.
 The owner merges this; the website decides sequencing in BACKLOG.md.
 
 1. **W12-C is delivered.** The producer side of the content–website contract
-   is [R-DOCS-003](https://github.com/ccozianu/devcapsule/blob/e67f6faf5e2aba80e942b35bd9bf72bea26adb10/engineering-docs/requirements/product/r-docs-003-website-content-carries-front-matter.md):
+   is [R-DOCS-003](https://github.com/mycodespace-ai/devcapsule/blob/e67f6faf5e2aba80e942b35bd9bf72bea26adb10/engineering-docs/requirements/product/r-docs-003-website-content-carries-front-matter.md):
    mandatory front matter on every published page under `docs/` and the
    journal (`description`, `draft`, `status`, `aliases`, `weight`, `updated`),
    and `docs/versions.yaml` giving the documentation the PostgreSQL shape:

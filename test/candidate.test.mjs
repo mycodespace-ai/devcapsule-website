@@ -44,7 +44,7 @@ test("public release download promotes packed bytes with no authentication", asy
   await download(source.tag, output, request);
   assert.equal(calls.length, 2);
   assert(calls.every(args => args.length === 1 && args[0].startsWith(
-    'https://github.com/ccozianu/devcapsule/releases/download/website-candidate-123-1/')));
+    'https://github.com/mycodespace-ai/devcapsule/releases/download/website-candidate-123-1/')));
   assert.equal(fs.readFileSync(path.join(output, "index.html"), "utf8"),
     original.replace("https://test-devcapsule.", "https://devcapsule."));
   assert.deepEqual(fs.readFileSync(path.join(output, "image.bin")), Buffer.from([0, 255, 128]));

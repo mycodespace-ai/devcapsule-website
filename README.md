@@ -2,7 +2,7 @@
 
 The presentation project for DevCapsule: an Eleventy static site with a landing
 page, navigable user guides, and a development journal. The authoritative content
-lives in [ccozianu/devcapsule](https://github.com/ccozianu/devcapsule).
+lives in [mycodespace-ai/devcapsule](https://github.com/mycodespace-ai/devcapsule).
 This repository owns layouts, styles, navigation, and the publishing machinery.
 Website functionality and follow-up work are tracked in [BACKLOG.md](BACKLOG.md);
 content and parent integration remain in DevCapsule. The owner authorized this
@@ -29,7 +29,7 @@ Stop with Ctrl+C. Failed rebuilds retain the last successful output.
 Use Node 22 or later and Git. No parent submodule update is necessary:
 
 ```sh
-git clone git@github.com:ccozianu/devcapsule-website.git
+git clone git@github.com:mycodespace-ai/devcapsule-website.git
 cd devcapsule-website
 # During initial review only: git switch initial-cut
 npm ci
@@ -60,7 +60,7 @@ and navigation. Keep substantive product prose in the DevCapsule repository.
 
 ## This project's own capsule
 
-Install DevCapsule using the [current first-session guide](https://github.com/ccozianu/devcapsule/blob/main/docs/guides/first-session.md).
+Install DevCapsule using the [current first-session guide](https://github.com/mycodespace-ai/devcapsule/blob/main/docs/guides/first-session.md).
 From a standalone clone on your host:
 
 ```sh

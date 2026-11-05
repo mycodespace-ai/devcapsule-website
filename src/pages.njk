@@ -35,7 +35,7 @@ eleventyComputed:
       {% if entry.landing.comparison %}<h2 id="{{ entry.landing.comparison.id }}">{{ entry.landing.comparison.heading }}</h2><div class="prose">{{ entry.landing.comparison.html | safe }}</div>{% endif %}
       {% if entry.landing.fit.columns.length %}<h2 id="fit">{{ entry.landing.fit.heading or 'Is it for you?' }}</h2><div class="fit-columns">{% for column in entry.landing.fit.columns %}<div class="fit-column prose">{% if column.heading %}<h3>{{ column.heading }}</h3>{% endif %}{{ column.html | safe }}</div>{% endfor %}</div>{% endif %}
     {% elif entry.planned %}
-      <aside class="notice notice-planned"><strong>Coming soon.</strong> This page will explain how a stranger picks a bug, works it with an agent inside DevCapsule, and sends it back. Until it is written, <a href="https://github.com/ccozianu/devcapsule/blob/main/DEVELOPING.md">the developer brief on GitHub</a> is the way in.</aside>
+      <aside class="notice notice-planned"><strong>Coming soon.</strong> This page will explain how a stranger picks a bug, works it with an agent inside DevCapsule, and sends it back. Until it is written, <a href="https://github.com/mycodespace-ai/devcapsule/blob/main/DEVELOPING.md">the developer brief on GitHub</a> is the way in.</aside>
     {% else %}
       <div class="prose">{{ entry.landing.contribute.html | safe }}</div>
     {% endif %}

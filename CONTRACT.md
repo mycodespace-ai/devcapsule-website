@@ -4,9 +4,9 @@ Accepted on 2026-09-28 by this repository, under the owner's autonomy grant
 recorded in [the visitor-experience work order](engineering-docs/work-orders/2026-09-28-website-visitor-experience.md),
 as the interface between the producer, DevCapsule, and this consumer. It
 implements the producer's proposal,
-[Design: The Content–Website Contract, Version 1](https://github.com/ccozianu/devcapsule/blob/main/engineering-docs/wip/2026-08-09-project-management/2026-09-28-design-content-website-contract.md),
+[Design: The Content–Website Contract, Version 1](https://github.com/mycodespace-ai/devcapsule/blob/main/engineering-docs/wip/2026-08-09-project-management/2026-09-28-design-content-website-contract.md),
 which extends
-[R-DOCS-003](https://github.com/ccozianu/devcapsule/blob/main/engineering-docs/requirements/product/r-docs-003-website-content-carries-front-matter.md),
+[R-DOCS-003](https://github.com/mycodespace-ai/devcapsule/blob/main/engineering-docs/requirements/product/r-docs-003-website-content-carries-front-matter.md),
 with the decisions its section 11a records. This file is the authoritative
 text on the consumer side, as backlog task W12 asks; the producer references
 it from R-DOCS-003. Where this file adds to or interprets the proposal, the

@@ -65,7 +65,7 @@ Authored content lives in DevCapsule: its `README.md`, `docs/`, and
 rendering, and publishing machinery, and never keeps a second copy of authored
 prose. The consumed interface is [CONTRACT.md](CONTRACT.md), the content–website
 contract version 1 accepted on 2026-09-28 under W12, implementing DevCapsule's
-[R-DOCS-003](https://github.com/ccozianu/devcapsule/blob/main/engineering-docs/requirements/product/r-docs-003-website-content-carries-front-matter.md)
+[R-DOCS-003](https://github.com/mycodespace-ai/devcapsule/blob/main/engineering-docs/requirements/product/r-docs-003-website-content-carries-front-matter.md)
 and the producer's contract design of the same date.
 
 ## Exceptions

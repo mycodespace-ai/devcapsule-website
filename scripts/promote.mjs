@@ -100,9 +100,9 @@ export function promote(directory, candidate) {
   for (const [file, html] of changes) fs.writeFileSync(file, html);
   for (const [file, text] of textChanges) fs.writeFileSync(file, text);
   info.promotion = {
-    sourceRun: `https://github.com/ccozianu/devcapsule/actions/runs/${candidate.runId}`,
+    sourceRun: `https://github.com/mycodespace-ai/devcapsule/actions/runs/${candidate.runId}`,
     sourceRunAttempt: candidate.runAttempt,
-    release: `https://github.com/ccozianu/devcapsule/releases/tag/${candidate.tag}`,
+    release: `https://github.com/mycodespace-ai/devcapsule/releases/tag/${candidate.tag}`,
     archiveDigest: candidate.digest,
     origin: productionOrigin,
     transformation: "origin-only: canonical links, social metadata URLs, JSON-LD URLs, robots.txt sitemap reference, sitemap locations",

@@ -7,7 +7,7 @@ import { execFileSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { promote } from "./promote.mjs";
 
-const repository = "https://github.com/ccozianu/devcapsule";
+const repository = "https://github.com/mycodespace-ai/devcapsule";
 const digest = bytes => "sha256:" + createHash("sha256").update(bytes).digest("hex");
 export function validateCandidate(candidate, tag) {
   assert.match(tag, /^website-candidate-[1-9][0-9]*-[1-9][0-9]*$/);
