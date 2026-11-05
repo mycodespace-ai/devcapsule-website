@@ -52,7 +52,7 @@ test("the fixture builds every version, the current copy, the index data, roles 
 
   // Tokens render the entry's release version, and devel's declared version.
   const current = page(site, "/docs/current/getting-started/first-session/");
-  assert.match(current.html, /Download v1\.0\.0 from <a href="https:\/\/github.com\/ccozianu\/devcapsule\/releases\/tag\/v1\.0\.0">/);
+  assert.match(current.html, /Download v1\.0\.0 from <a href="https:\/\/github.com\/mycodespace-ai\/devcapsule\/releases\/tag\/v1\.0\.0">/);
   assert.match(current.html, /releases\/download\/v1\.0\.0\/fixture/);
   assert.match(page(site, "/docs/devel/").html, /Version 1\.1\.0\.dev0/);
   assert.match(page(site, "/docs/current/").html, /Version 1\.0\.0/);
@@ -63,7 +63,7 @@ test("the fixture builds every version, the current copy, the index data, roles 
   assert.match(page(site, "/docs/1.0.0/getting-started/first-session/").html, /href="\/docs\/1\.0\.0\/platforms\/windows-wsl2\/#before-you-start"/);
   assert.match(current.html, /href="\/"/);
   const releaseSha = repo.git("rev-parse", "v1.0.0");
-  assert.match(current.html, new RegExp(`href="https://github.com/ccozianu/devcapsule/blob/${releaseSha}/DEVELOPING.md"`));
+  assert.match(current.html, new RegExp(`href="https://github.com/mycodespace-ai/devcapsule/blob/${releaseSha}/DEVELOPING.md"`));
   assert.match(page(site, "/docs/current/").html, /src="\/content-assets\/[0-9a-f]{7}\/docs\/images\/diagram.svg"/);
   assert.match(page(site, "/docs/devel/").html, /src="\/content-assets\/main\/docs\/images\/diagram.svg"/);
 
@@ -340,7 +340,7 @@ test("release notes become one page per final tag, newest first, with the curren
   assert.equal(notes.docsUrl, "/docs/current/");
   assert.equal(page(site, "/releases/v0.9.0/").docsUrl, "/docs/0.9.0/");
   assert.match(notes.html, /href="\/docs\/current\/getting-started\/first-session\/"/);
-  assert.match(notes.html, /href="https:\/\/github.com\/ccozianu\/devcapsule\/blob\/[0-9a-f]{40}\/engineering-docs\/bugs\/README.md"/);
+  assert.match(notes.html, /href="https:\/\/github.com\/mycodespace-ai\/devcapsule\/blob\/[0-9a-f]{40}\/engineering-docs\/bugs\/README.md"/);
   assert.equal(notes.lastmod, "2026-01-05");
   assert.equal(notes.indexable, true);
   assert.ok(site.sitemap.some((e) => e.loc === "/releases/"));

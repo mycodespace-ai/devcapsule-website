@@ -12,7 +12,7 @@ requirements: []
 Transferred on 2026-09-19 by explicit owner direction from DevCapsule's website
 workstream. This is the authoritative open record in the single-stream website
 project (`owner: none`). The affected parent workflow remains at
-[DevCapsule .github/workflows/website.yml](https://github.com/ccozianu/devcapsule/blob/main/.github/workflows/website.yml);
+[DevCapsule .github/workflows/website.yml](https://github.com/mycodespace-ai/devcapsule/blob/main/.github/workflows/website.yml);
 website owns the fix and coordinates caller changes through parent task I01.
 The transfer does not fix the defect.
 

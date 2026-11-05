@@ -4,9 +4,9 @@ Date: 2026-09-28. Issued by `project-management` under the owner's grant of
 2026-09-28 to run this independently and decide without asking. Executed in
 the `devcapsule-website` repository, single-stream, from its own
 `CURRENT-STATUS.md`. The producer-side companion is
-[the visitor content work order](https://github.com/ccozianu/devcapsule/blob/main/engineering-docs/work-orders/2026-09-28-visitor-content-and-producer-migration.md)
+[the visitor content work order](https://github.com/mycodespace-ai/devcapsule/blob/main/engineering-docs/work-orders/2026-09-28-visitor-content-and-producer-migration.md)
 in DevCapsule. Both rest on
-[the content–website contract, version 1](https://github.com/ccozianu/devcapsule/blob/main/engineering-docs/wip/2026-08-09-project-management/2026-09-28-design-content-website-contract.md).
+[the content–website contract, version 1](https://github.com/mycodespace-ai/devcapsule/blob/main/engineering-docs/wip/2026-08-09-project-management/2026-09-28-design-content-website-contract.md).
 
 Status: open. Release: none; the site publishes on its own clock, and the
 first publication after this order is the one that documents 0.2.15.

@@ -1,7 +1,7 @@
 # Developing and testing against a copy of the DevCapsule parent
 
 This site has no content of its own. Every page comes from a checkout of
-[ccozianu/devcapsule](https://github.com/ccozianu/devcapsule): the README,
+[mycodespace-ai/devcapsule](https://github.com/mycodespace-ai/devcapsule): the README,
 the journal, the release notes and the documentation tree, the last one once
 per version the manifest lists. So developing the site means building it
 against a copy of the parent, and testing a change means building against a

@@ -28,11 +28,11 @@ test("Markdown links keep anchors and queries, reach published pages, and become
   assert.equal(docsPath("docs/README.md"), "");
   assert.equal(docsPath("docs/getting-started/first-session.md"), "getting-started/first-session/");
   assert.equal(docsPath("docs/reference/README.md"), "reference/");
-  const permalink = "https://github.com/ccozianu/devcapsule/blob/" + sha + "/AGENTS.md";
+  const permalink = "https://github.com/mycodespace-ai/devcapsule/blob/" + sha + "/AGENTS.md";
   assert.equal(resolveTarget(permalink, "README.md", context), permalink);
   assert.equal(
     resolveTarget("../DEVELOPING.md", "docs/README.md", context),
-    `https://github.com/ccozianu/devcapsule/blob/${sha}/DEVELOPING.md`,
+    `https://github.com/mycodespace-ai/devcapsule/blob/${sha}/DEVELOPING.md`,
   );
   assert.equal(resolveTarget("images/x.png", "docs/README.md", context), "/content-assets/main/docs/images/x.png");
   assert.throws(() => resolveTarget("missing.md", "README.md", context), /broken source link/);

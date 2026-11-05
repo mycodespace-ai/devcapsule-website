@@ -11,7 +11,7 @@ if (!fs.existsSync(dir))
   git([
     "clone",
     "--no-recurse-submodules",
-    "https://github.com/ccozianu/devcapsule.git",
+    "https://github.com/mycodespace-ai/devcapsule.git",
     dir,
   ]);
 const dirty = execFileSync("git", ["-C", dir, "status", "--porcelain"], {

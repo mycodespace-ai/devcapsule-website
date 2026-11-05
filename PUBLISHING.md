@@ -113,10 +113,10 @@ does not depend on Actions logs or artifacts still being available.
    and website submodule pin. With a squash merge, select the merged website
    revision in the parent before merging it. The owner creates/merges PRs;
    SSH delivery does not require GitHub app access.
-2. In **ccozianu/devcapsule-website → Settings → Pages**, select source
+2. In **mycodespace-ai/devcapsule-website → Settings → Pages**, select source
    **GitHub Actions**. Skip suggested workflow templates; our workflow exists.
 3. Set the custom domain to **devcapsule.mycodespace.ai**. Create DNS
-   **CNAME `devcapsule` → `ccozianu.github.io`** in the `mycodespace.ai` zone.
+   **CNAME `devcapsule` → `mycodespace-ai.github.io`** in the `mycodespace.ai` zone.
    Keep the parent's test domain and CNAME. Enable **Enforce HTTPS** after
    GitHub provisions the production certificate.
 4. In **Settings → Environments → github-pages**, restrict deployment to `main`.
@@ -133,7 +133,7 @@ and may be deleted; its personal token can also be revoked if unused elsewhere.
 1. Run the updated parent **Website** workflow on `main` with the test-domain
    settings above. Wait for `build`, `deploy` and `candidate` to succeed.
 2. Review the test site. Copy the **candidate tag** from the run summary or
-   [DevCapsule releases](https://github.com/ccozianu/devcapsule/releases).
+   [DevCapsule releases](https://github.com/mycodespace-ai/devcapsule/releases).
 3. In this repository, run **Publish production website** on `main` with that
    tag. Approve an environment gate if configured. Wait for `prepare` and
    `deploy` to succeed.

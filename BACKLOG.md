@@ -19,7 +19,7 @@ does not transfer that responsibility. DevCapsule retains the small integration
 needed to invoke/pin those tools; no workflow code is moved by this handoff.
 
 Producer responsibilities and integration requests are tracked in the
-[DevCapsule content/integration tasks](https://github.com/ccozianu/devcapsule/blob/main/engineering-docs/wip/2026-09-16-website/CURRENT-STATUS.md#content-and-integration-tasks-retained-in-devcapsule).
+[DevCapsule content/integration tasks](https://github.com/mycodespace-ai/devcapsule/blob/main/engineering-docs/wip/2026-09-16-website/CURRENT-STATUS.md#content-and-integration-tasks-retained-in-devcapsule).
 The companion parent update and this backlog are delivered together. Suffix
 `-C` denotes a content-side task, not a duplicate website implementation task.
 W12 will establish one versioned contract here, with producer agreement and a

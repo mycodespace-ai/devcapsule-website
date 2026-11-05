@@ -9,7 +9,7 @@ import { execFileSync } from "node:child_process";
 import { parse as parseYaml } from "yaml";
 
 export const CONTRACT = 1;
-export const repository = "https://github.com/ccozianu/devcapsule";
+export const repository = "https://github.com/mycodespace-ai/devcapsule";
 export const ROLES = [
   "overview",
   "getting-started",

@@ -1,7 +1,7 @@
 # Website requirements
 
 The initial contract is DevCapsule's
-[2026-09-16 website work order](https://github.com/ccozianu/devcapsule/blob/main/engineering-docs/work-orders/2026-09-16-website-autonomy.md).
+[2026-09-16 website work order](https://github.com/mycodespace-ai/devcapsule/blob/main/engineering-docs/work-orders/2026-09-16-website-autonomy.md).
 
 - Preserve the landing-page substance and visible project-health information.
 - Publish user documentation with natural internal links and meaningful navigation.
