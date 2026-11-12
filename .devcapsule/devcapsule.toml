@@ -17,5 +17,5 @@ enables = ["host-browser-local-preview"]
 
 [workflow]
 definition = "devcapsule"
-version = "0.2.14"
+version = "0.3.1"
 mode = "single-stream"

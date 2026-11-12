@@ -5,7 +5,9 @@ installed generic definition and binds wherever it speaks; this file governs
 wherever it is silent. See *The Project's Local Workflow* in `WORKFLOW.md`.
 The definition was installed on 2026-09-22 at version 0.2.14, from the parent
 DevCapsule checkout at the owner's instruction, after this project had run
-for a week on its own single-stream handoff without one.
+for a week on its own single-stream handoff without one. It was refreshed on
+2026-11-12 to version 0.3.1 with `devcapsule bootstrap project
+--refresh-workflow-definition` at the owner's instruction.
 
 ## Integration Branch
 
@@ -39,11 +41,44 @@ No production publication happens without the owner's explicit acceptance.
 
 ## Validation Commands
 
-Before a checkpoint: `npm test`, `npm run build`, `npm run check`. For layout
-or interaction changes also inspect desktop and mobile screenshots and run
-`npm run test:browser` against the running preview. For changes to content
-consumption run `npm run test:updates` on a clean standalone clone. The full
-description is in [README.md](README.md#validate) and [DEVELOPING.md](DEVELOPING.md).
+All commands below run from the repository root (`devcapsule-website/`):
+
+- **Environment**: Node 22 or newer, `npm`, Git, and GNU `tar` (all present in
+  this project's DevCapsule image). Install locked dependencies with `npm ci`.
+  For standalone builds without a parent checkout at `..` or `CONTENT_DIR` set,
+  fetch content once with `npm run content:fetch` (requires Git checkout
+  metadata on both repositories). For browser checks, install Chromium once
+  with `npx playwright install chromium`.
+- **Unit tests**: `npm test` (exercises contract, content routing, candidate
+  packaging, promotion, and verification against self-contained fixtures).
+- **Integration tests**: `npm run check:content`, `npm run build`, and
+  `npm run check` (assembles content, builds `_site/`, and verifies links,
+  fragments, image labels, revision metadata, JSON-LD, and `sitemap.xml`);
+  `npm run test:updates` on a clean committed standalone clone when content
+  consumption changes.
+- **End-to-end tests**: start `npm run dev` in one terminal and run
+  `npm run test:browser` in another (set `PREVIEW_URL` if the preview chose a
+  non-default port). Requires Playwright Chromium; writes screenshots and the
+  audit record to ignored `.artifacts/` for visual inspection.
+- **Smoke test**: run `npm run preview` and verify HTTP 200 on `/` and
+  `/docs/current/` on the printed loopback URL (default
+  `http://127.0.0.1:8080/`); automated post-deployment smoke verification is
+  tracked under backlog W05 (`none` automated in CI today, pending W05).
+- **Gate**: `npm test`, `npm run build`, and `npm run check` before a
+  checkpoint and before integration; add `npm run test:browser` (plus visual
+  inspection of desktop and mobile screenshots) for layout or interaction
+  changes, and `npm run test:updates` for content-consumption changes.
+- **Candidate gate**: DevCapsule's **Website** workflow runs `npm test`, a
+  production-mode build for `https://test-devcapsule.mycodespace.ai` at `/`,
+  and `npm run check` before deploying the test site and publishing
+  `website-candidate-<run>-<attempt>`; this repository's **Publish production
+  website** workflow verifies archive SHA-256, provenance, origin rewrite, and
+  `npm run check` before promoting.
+- **Acceptance evidence**: the owner's review of the deployed test site,
+  recorded with the promoted `website-candidate-<run>-<attempt>` tag and what
+  was checked in `CURRENT-STATUS.md`.
+
+Further detail is in [README.md](README.md#validate) and [DEVELOPING.md](DEVELOPING.md).
 
 ## Host Capabilities
 

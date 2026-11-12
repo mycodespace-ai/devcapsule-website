@@ -10,6 +10,14 @@ debugger recording (`eclipse-hello-time-debug.webm`) instead of the earlier
 IntelliJ persistence session. Delivery: SSH push, owner merges PRs and runs the
 publication workflows.
 
+## Workflow definition refreshed to 0.3.1 (2026-11-12)
+
+- At the owner's instruction, ran `devcapsule bootstrap project --refresh-workflow-definition` (from the capsule's installed `DevCapsule v0.3.1-rc2`), refreshing [WORKFLOW.md](WORKFLOW.md) and [AGENTS.md](AGENTS.md) to `0.3.1`, adding [PREAMBLE.md](PREAMBLE.md) and [INFORMATION-MODEL.md](INFORMATION-MODEL.md), and advancing `[workflow] version` in `.devcapsule/devcapsule.toml` from `0.2.14` to `0.3.1`.
+- Preserved and restored `## Website-Specific Instructions` in [AGENTS.md](AGENTS.md), added the two new Markdown companions to [index.md](index.md), and completed the `0.3.0` migration in [WORKFLOW-LOCAL.md](WORKFLOW-LOCAL.md) (`## Validation Commands` now declares the inline environment and validation kinds: environment, unit, integration, end-to-end, smoke, gate, candidate gate, and acceptance evidence). Reviewed the one open bug record under `engineering-docs/bugs/website/` (`status: confirmed`, `owner: none`); it violates promised input-eligibility behavior so it remains a bug record rather than a backlog entry.
+- Validated (after the owner embedded `website/.git` on the host): `devcapsule bootstrap project` exits 0; `npm test` passes (23/23); against `.content` at DevCapsule `main` (`bb824693a2`), `npm run check:content`, `npm run build` (256 files), and `npm run check` (253 HTML pages, 21194 local links/assets/anchors) all pass.
+- Filed [2026-11-12-content-fetch-checks-out-first-alphabetical-branch.md](engineering-docs/bugs/website/2026-11-12-content-fetch-checks-out-first-alphabetical-branch.md) (`status: confirmed`, `severity: minor`, `owner: none`): `npm run content:fetch` detaches `.content/` at `origin/badges` instead of `main` because `git fetch` writes all `+refs/heads/*` into `FETCH_HEAD` in alphabetical order before `ref` (worked around locally with `git -C .content checkout --detach origin/main`).
+- Note for `0.3.0` hosting migration: ensure `mycodespace-ai/devcapsule-website` uses merge commits on GitHub (or record a squash-merge exception in [WORKFLOW-LOCAL.md](WORKFLOW-LOCAL.md)).
+
 ## The repositories move to the `mycodespace-ai` organization (2026-11-05)
 
 - DevCapsule lives in `mycodespace-ai/devcapsule` from 2026-11-05 and this
