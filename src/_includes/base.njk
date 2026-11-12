@@ -22,8 +22,10 @@
   <meta name="twitter:image" content="{{ id.image }}">
   {% if id.jsonLd %}<script type="application/ld+json">{{ id.jsonLd | json | safe }}</script>{% endif %}
   <link rel="icon" href="{{ '/assets/favicon.svg' | url }}" type="image/svg+xml">
-  <link rel="preload" href="{{ '/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2' | url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{{ '/assets/fonts/fraunces-latin-wght-normal.woff2' | url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/tokens-and-base.css' | url }}">
   <link rel="stylesheet" href="{{ '/assets/site.css' | url }}">
   <script src="{{ '/assets/site.js' | url }}" defer></script>
 </head>
@@ -39,6 +41,7 @@
       <a href="{{ '/releases/' | url }}" {% if entry.kind == 'release' or page.url == '/releases/' %}aria-current="true"{% endif %}>Releases</a>
       <a class="github-link" href="https://github.com/mycodespace-ai/devcapsule" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
       <label class="palette-picker" hidden><span class="sr-only">Colour scheme</span><select id="palette" aria-label="Colour scheme">
+        <option value="blueprint">Blueprint paper</option>
         <option value="catppuccin-latte">Catppuccin latte</option>
         <option value="catppuccin-mocha">Catppuccin mocha</option>
         <option value="system">DevCapsule day &amp; night (system)</option>

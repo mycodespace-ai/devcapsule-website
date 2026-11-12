@@ -43,9 +43,9 @@ eleventyComputed:
   </article>
 </div>
 {% else %}
-<div class="reading-layout {% if entry.kind == 'post' %}journal-layout{% endif %}">
+<div class="reading-layout {% if entry.kind == 'doc' %}docs-shell{% else %}journal-layout{% endif %}">
   {% if entry.kind == 'doc' %}{% include 'sidebar.njk' %}{% endif %}
-  <article class="reading-main" aria-labelledby="{{ entry.titleId }}">
+  <article class="reading-main {% if entry.kind == 'doc' %}docs-content{% endif %}" aria-labelledby="{{ entry.titleId }}">
     {% if entry.kind == 'doc' %}{% include 'switcher.njk' %}{% endif %}
     <div class="breadcrumbs"><a href="{{ '/' | url }}">Home</a><span>/</span>{% if entry.kind == 'post' %}<a href="{{ '/journal/' | url }}">Journal</a>{% else %}<a href="{{ '/docs/' | url }}">Documentation</a><span>/</span><a href="{{ (entry.version.url if entry.copy == 'current' else entry.version.versionUrl) | url }}">{{ entry.version.label }}{% if entry.version.current %} (current){% endif %}</a>{% endif %}</div>
     {% if entry.kind == 'post' %}<div class="eyebrow post-meta"><time datetime="{{ entry.date }}">{{ entry.dateLabel }}</time><span>{{ entry.minutes }} min read</span>{% if entry.draft %}<span class="label-draft">Draft</span>{% endif %}</div>{% else %}<div class="eyebrow post-meta">{% if entry.historical %}<span>Background &amp; earlier material</span>{% elif entry.planned %}<span>Coming soon</span>{% else %}<span>The DevCapsule guides</span>{% endif %}{% if entry.updated %}<span>Updated <time datetime="{{ entry.updated }}">{{ entry.updated | datelabel }}</time></span>{% endif %}{% if entry.draft %}<span class="label-draft">Draft</span>{% endif %}</div>{% endif %}
@@ -58,6 +58,6 @@ eleventyComputed:
     <div class="article-end"><a href="{{ entry.sourceUrl }}">Read the source on GitHub <span aria-hidden="true">↗</span></a><a href="#{{ entry.titleId }}">Back to top ↑</a></div>
     {% if entry.kind == 'post' %}<a class="button secondary" href="{{ '/journal/' | url }}">← All journal entries</a>{% elif entry.sidebar.start.length > 1 %}<div class="doc-next"><span class="eyebrow">Keep going</span>{% for item in entry.sidebar.start %}{% if item.path != entry.path %}<a href="{{ item.url | url }}">{{ item.title }} <span aria-hidden="true">↗</span></a>{% endif %}{% endfor %}</div>{% endif %}
   </article>
-  {% if entry.toc.length %}<aside class="toc-desktop" aria-label="On this page"><span class="eyebrow">On this page</span>{% include 'toc.njk' %}</aside>{% endif %}
+  {% if entry.toc.length %}<aside class="toc-desktop docs-toc-right" aria-label="On this page"><span class="eyebrow">On this page</span>{% include 'toc.njk' %}</aside>{% endif %}
 </div>
 {% endif %}

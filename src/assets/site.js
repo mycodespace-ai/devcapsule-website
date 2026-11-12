@@ -1,11 +1,11 @@
-// Colour scheme picker. Catppuccin latte is the default and needs no
+// Colour scheme picker. Blueprint paper is the default and needs no
 // JavaScript; a chosen scheme is stored per browser, and "system" follows
 // the preference between the DevCapsule day and night palettes.
 const picker = document.querySelector('.palette-picker');
 if (picker) {
   const select = picker.querySelector('select');
   const root = document.documentElement;
-  const DEFAULT = 'catppuccin-latte';
+  const DEFAULT = 'blueprint';
   const known = [...select.options].map((o) => o.value);
   const stored = () => { try { return localStorage.getItem('palette'); } catch { return null; } };
   const apply = (value) => {
@@ -25,6 +25,17 @@ if (picker) {
   });
   picker.hidden = false;
 }
+const navToggle = document.querySelector('.docs-nav-toggle');
+if (navToggle) {
+  const sidebar = navToggle.closest('.docs-sidebar-left');
+  navToggle.hidden = false;
+  const setOpen = (open) => {
+    navToggle.setAttribute('aria-expanded', String(open));
+    sidebar?.toggleAttribute('data-open', open);
+  };
+  navToggle.addEventListener('click', () => setOpen(navToggle.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sidebar?.hasAttribute('data-open')) { setOpen(false); navToggle.focus(); } });
+}
 for (const pre of document.querySelectorAll('.prose pre')) {
   if (!navigator.clipboard) continue;
   const code = pre.querySelector('code');
@@ -42,14 +53,20 @@ for (const pre of document.querySelectorAll('.prose pre')) {
     } catch { document.getElementById('copy-status').textContent = 'Copy unavailable. Select the code and copy it manually.'; }
   });
 }
-const toc = [...document.querySelectorAll('.toc-desktop a')];
-if ('IntersectionObserver' in window && toc.length) {
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) if (entry.isIntersecting) {
-      toc.forEach(link => { if (decodeURIComponent(link.hash.slice(1)) === entry.target.id) link.setAttribute('aria-current','location'); else link.removeAttribute('aria-current'); });
-    }
-  }, { rootMargin: '-15% 0px -65% 0px' });
-  document.querySelectorAll('.prose h2,.prose h3').forEach(el => observer.observe(el));
+const toc = [...document.querySelectorAll('.docs-toc-right a, .toc-desktop a')];
+const headings = [...document.querySelectorAll('.prose h2[id], .prose h3[id]')];
+if (toc.length && headings.length) {
+  const setActive = (id) => toc.forEach((link) => {
+    if (decodeURIComponent(link.hash.slice(1)) === id) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  setActive(decodeURIComponent(location.hash.slice(1)) || headings[0].id);
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
+    }, { rootMargin: '-12% 0px -68% 0px' });
+    headings.forEach((el) => observer.observe(el));
+  }
 }
 for (const btn of document.querySelectorAll('[data-video-expand]')) {
   const dialog = document.getElementById(btn.getAttribute('data-video-expand'));
