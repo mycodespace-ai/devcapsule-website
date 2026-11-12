@@ -1,13 +1,11 @@
 # Website current status
 
-State: Executing
+State: Delivered
 [Visual styling & dual-navigation upgrade](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md)
-on branch `website-retro-blueprint-styling-and-dual-nav` (aerated `#fafaf5`
-blueprint paper + radial dot grid, `Space Mono` / `VT323` / `Inter` /
-`JetBrains Mono` typography, GitHub Primer `1px solid #d0d7de` / `6px` cards and
-pills, reusable `tokens-and-base.css` for `mycodespace.ai`, and 3-column
-documentation shell). W00 (search discoverability) is closed following Search Console
-verification and indexing. All four slices of
+on branch `website-retro-blueprint-styling-and-dual-nav`, ready for owner review,
+SSH push from the host, PR merge, and candidate publication. W00 (search
+discoverability) is closed following Search Console verification and indexing.
+All four slices of
 [Social metadata and page identity](engineering-docs/work-orders/2026-10-16-social-metadata-and-page-identity.md)
 (W09 / W12) and the landing-page demonstration extensions are delivered and
 validated. On 2026-10-22, updated `src/assets/session-demo.vtt` so the WebVTT
@@ -16,10 +14,15 @@ debugger recording (`eclipse-hello-time-debug.webm`) instead of the earlier
 IntelliJ persistence session. Delivery: SSH push, owner merges PRs and runs the
 publication workflows.
 
-## Visual styling & dual-navigation work order started (2026-11-12)
+## Visual styling & dual-navigation upgrade delivered (2026-11-12)
 
-- Parsed and committed [2026-11-12-retro-blueprint-styling-and-dual-nav.md](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md), reconciling the specification with `devcapsule-website`'s `single-stream` workflow, `CONTRACT.md` content boundary, W14 colour-scheme picker, and no-JS mobile navigation checks.
-- Next slice: implement `src/assets/tokens-and-base.css`, Google Fonts + Blueprint default palette in `src/_includes/base.njk` and `src/assets/site.css`, and the 3-column `.docs-shell` layout across `src/pages.njk`, `src/_includes/sidebar.njk`, and `src/assets/site.js`.
+- Parsed and committed [2026-11-12-retro-blueprint-styling-and-dual-nav.md](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md) (indexed in [index.md](index.md)), reconciling the draft specification with `devcapsule-website`'s `single-stream` workflow, [CONTRACT.md](CONTRACT.md) zero-prose-copy boundary, W14 colour-scheme picker, and no-JavaScript mobile navigation invariants.
+- **Deliverable 1 (Open-source typography & Blueprint/Primer tokens):** Created standalone reusable [src/assets/tokens-and-base.css](src/assets/tokens-and-base.css) (ready for direct reuse on `mycodespace.ai`), loaded SIL OFL Google Fonts (`Space Mono`, `VT323`, `Inter`, `JetBrains Mono`) in `src/_includes/base.njk`, set aerated Blueprint paper (`#fafaf5` + `20px × 20px` radial dot grid + GitHub Primer `#d0d7de` `1px` borders and `6px` card radius) as the `:root` default (`blueprint`), and bridged all 10 existing open-source palettes via `:root[data-palette]` in `src/assets/site.css`.
+- **Deliverable 2 (3-column documentation shell & responsive dual navigation):** Updated `src/pages.njk`, `src/_includes/sidebar.njk`, `src/assets/site.js`, and `src/assets/site.css` to render `.docs-shell` (`260px minmax(0, 1fr) 220px`, `max-width: 1400px`) with sticky `.docs-sidebar-left` (uppercase `--font-mono` section headers, `2px` `#2563eb` active bar + blueprint wash), `72ch` `.docs-content`, and sticky `.docs-toc-right` (`IntersectionObserver` scroll-spy setting `aria-current="location"`). Below `1200px`, `.docs-toc-right` collapses into the inline Primer `<details class="mobile-toc">` card (2-column grid); below `860px`, `.docs-sidebar-left` collapses into an accessible `.docs-nav-toggle` drawer (`aria-expanded`, `Escape` close) when JS is active while staying open without JS.
+- **Deliverable 3 (Primer cards, callouts, code blocks & metadata pills):** Applied crisp `1px solid var(--border-default)` / `6px` radius / flat `0 1px 2px rgba(31, 35, 40, 0.06)` elevation across hero/demo figures, pillars, benefit cards, continuity & fit cards, journal post cards, releases strip, callout banners, code blocks (Primer light syntax palette by default, dark pre palette in alternative schemes), tables, and uppercase `--font-mono` rounded version/status pills.
+- **Deliverable 4 (Verification & visual inspection):** `npm test` (`23/23` passed), `npm run check:content` (`249` pages, `18` aliases), production `npm run build` (`256` files) + `npm run check` (`253` HTML pages, `20,959` local links/assets/anchors, `50` indexable sitemap pages), and `npm run test:browser` (`63` page/viewport/scheme audits across `1440px`, `1024px`, and `360px` with and without JS, zero overflow, zero WCAG 2A/2AA/2.1AA violations) all pass. Desktop (`1440px`), tablet (`1024px`), mobile (`360px` closed and open drawer), and dark-mode screenshots in `.artifacts/` were visually inspected, catching and fixing `.closing-grid h2` left alignment and `360px` `.palette-picker select` label width.
+- **Next step:** Push `website-retro-blueprint-styling-and-dual-nav` from the host over SSH (host SSH credentials are intentionally excluded from the capsule), open/merge the PR into `mycodespace-ai/devcapsule-website` `main`, advance the `website` submodule pin in `mycodespace-ai/devcapsule`, and run the test/production candidate workflows upon owner acceptance ([PUBLISHING.md](PUBLISHING.md)).
+
 
 ## Workflow definition refreshed to 0.3.1 (2026-11-12)
 

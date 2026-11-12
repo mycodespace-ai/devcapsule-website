@@ -393,6 +393,12 @@ implied by recording these tasks.
   that follows the system preference. The option list renders dark text on a
   light popup in every scheme, after the owner saw white-on-white options in
   the dark ones.
+- Owner work order (2026-11-12,
+  [retro blueprint styling & dual-nav](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md)):
+  Blueprint paper (`#fafaf5` with subtle radial dot grid and GitHub Primer
+  borders) is now the `:root` default (`blueprint`, unstored and active without
+  JavaScript); Catppuccin latte and all nine other schemes remain selectable in
+  the picker and pass WCAG 2.1 AA browser audits (63 audits).
 - Reopen if a component gains a colour outside the tokens, or the picker stops
   persisting.
 

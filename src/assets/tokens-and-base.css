@@ -1,0 +1,191 @@
+/* Shared Open-Source Design Tokens & Primer Base Layer
+   Used by devcapsule.mycodespace.ai and reusable standalone on mycodespace.ai.
+   References:
+   - Aerated warm blueprint paper & 3-column reading shell (MIT, aiengineeringfromscratch.com)
+   - Crisp 1px borders, 6px card geometry & flat pills (MIT, GitHub Primer / github.com/mycodespace-ai)
+   - Fonts: Space Mono, VT323, Inter, JetBrains Mono (SIL Open Font License) */
+
+/* ---------- 1. Core Design Tokens ---------- */
+:root {
+  color-scheme: light;
+
+  /* Surface & Aerated Blueprint Tokens */
+  --bg-paper: #fafaf5;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f3f4f6;
+  --bg-code: #f6f8fa;
+  --line-grid: rgba(26, 26, 26, 0.055);
+
+  /* Ink & Typography Colors */
+  --ink: #1f2328;
+  --ink-soft: #4a5568;
+  --ink-muted: #656d76;
+
+  /* Technical Accent & Primer Border Tokens */
+  --blueprint: #2563eb;
+  --blueprint-strong: #1d4ed8;
+  --blueprint-subtle: rgba(37, 99, 235, 0.08);
+  --border-default: #d0d7de;
+  --border-muted: #e5e7eb;
+  --radius-card: 6px;
+  --shadow-primer: 0 1px 2px rgba(31, 35, 40, 0.06);
+
+  /* Font Families */
+  --font-display: 'Space Mono', ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  --font-display-retro: 'VT323', 'Space Mono', ui-monospace, monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+/* Optional retro terminal display mode (toggleable on :root or per-element) */
+.retro-vt323,
+:root[data-display="vt323"] {
+  --font-display: var(--font-display-retro);
+}
+
+/* ---------- 2. Base Reset & Aerated Blueprint Surface ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-paper);
+  background-image: radial-gradient(var(--line-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.retro-heading {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+}
+
+/* ---------- 3. Primer-Inspired Reusable Containers & Badges ---------- */
+.primer-card,
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-primer);
+}
+
+a.primer-card:hover,
+.primer-card--interactive:hover {
+  border-color: var(--blueprint);
+}
+
+.pill,
+.actor-badge,
+.meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--ink-muted);
+}
+
+.callout {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-left: 3px solid var(--blueprint);
+  border-radius: var(--radius-card);
+  padding: 0.875rem 1.125rem;
+}
+
+/* ---------- 4. Reusable 3-Column Documentation Shell ---------- */
+.docs-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 220px;
+  gap: 2.5rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  align-items: start;
+}
+
+.docs-sidebar-left {
+  position: sticky;
+  top: 4rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  padding: 2rem 0.5rem 3rem 0;
+}
+
+.docs-content {
+  min-width: 0;
+  width: 100%;
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 5rem;
+}
+
+.docs-toc-right {
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  font-size: 0.825rem;
+  padding: 0.25rem 0 2rem 1rem;
+  border-left: 1px solid var(--border-default);
+}
+
+@media (max-width: 1199px) {
+  .docs-shell {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 2rem;
+  }
+  .docs-toc-right {
+    display: none;
+  }
+}
+
+@media (max-width: 859px) {
+  .docs-shell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 0 1rem;
+  }
+  .docs-sidebar-left {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 1rem 0 0;
+  }
+  .docs-content {
+    padding: 1.5rem 0 3.5rem;
+  }
+}

@@ -10,7 +10,7 @@ product prose is copied into this repository, and all existing URL routes,
 aliases, canonical links, social metadata, JSON-LD, and promotion invariants
 remain intact.
 
-Status: in progress (2026-11-12). Target release: `v0.3.x` Website &
+Status: delivered (2026-11-12), awaiting owner review and merge. Target release: `v0.3.x` Website &
 Documentation Design System Refresh; the website publishes on its own candidate
 and promotion clock ([PUBLISHING.md](../../PUBLISHING.md)).
 
