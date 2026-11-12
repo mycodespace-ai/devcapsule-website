@@ -1,6 +1,12 @@
 # Website current status
 
-State: W00 (search discoverability) is closed following Search Console
+State: Executing
+[Visual styling & dual-navigation upgrade](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md)
+on branch `website-retro-blueprint-styling-and-dual-nav` (aerated `#fafaf5`
+blueprint paper + radial dot grid, `Space Mono` / `VT323` / `Inter` /
+`JetBrains Mono` typography, GitHub Primer `1px solid #d0d7de` / `6px` cards and
+pills, reusable `tokens-and-base.css` for `mycodespace.ai`, and 3-column
+documentation shell). W00 (search discoverability) is closed following Search Console
 verification and indexing. All four slices of
 [Social metadata and page identity](engineering-docs/work-orders/2026-10-16-social-metadata-and-page-identity.md)
 (W09 / W12) and the landing-page demonstration extensions are delivered and
@@ -9,6 +15,11 @@ caption track on the landing-page `<video>` matches the 27.4-second Eclipse Java
 debugger recording (`eclipse-hello-time-debug.webm`) instead of the earlier
 IntelliJ persistence session. Delivery: SSH push, owner merges PRs and runs the
 publication workflows.
+
+## Visual styling & dual-navigation work order started (2026-11-12)
+
+- Parsed and committed [2026-11-12-retro-blueprint-styling-and-dual-nav.md](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md), reconciling the specification with `devcapsule-website`'s `single-stream` workflow, `CONTRACT.md` content boundary, W14 colour-scheme picker, and no-JS mobile navigation checks.
+- Next slice: implement `src/assets/tokens-and-base.css`, Google Fonts + Blueprint default palette in `src/_includes/base.njk` and `src/assets/site.css`, and the 3-column `.docs-shell` layout across `src/pages.njk`, `src/_includes/sidebar.njk`, and `src/assets/site.js`.
 
 ## Workflow definition refreshed to 0.3.1 (2026-11-12)
 
