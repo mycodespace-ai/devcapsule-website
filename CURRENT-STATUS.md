@@ -16,8 +16,9 @@ the site builds and its link check passes against the release checkout. A deskto
 and mobile Chromium check opened the example and advanced a slide. Against the
 older canonical mainline content, the site link check reports the missing home
 anchor `#what-you-get` and the browser suite stops at a 404 in its route list.
-The browser suite passed 63 audits against the newer release content. Complete
-the clean-clone update check before delivery. The parent workstream has the four incoming
+The browser suite passed 63 audits against the newer release content. The
+clean-clone update check passed after replacing its stale README wording with
+the stable hero marker. The parent workstream has the four incoming
 mail items and retains the Pagefind direction in W10.
 
 
