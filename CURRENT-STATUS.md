@@ -1,5 +1,26 @@
 # Website current status
 
+## Presentations in progress (2026-11-15)
+
+The owner requested the console presentation UI on the website. The branch
+`presentations` embeds a static adaptation of the console viewer, discovers
+presentation folders under the content checkout's
+`devcapsule-webconsole/resources/presentations/`, and copies their media into
+the site. The parent website workstream supplies the example. No publication
+is authorized. The parent must integrate the example and pin this website
+revision together. The source viewer was taken from the release checkout; the
+website copy must be kept in sync when the console viewer changes.
+
+Validation so far: the website's 23 unit tests and content contract passed;
+the site builds and its link check passes against the release checkout. A desktop
+and mobile Chromium check opened the example and advanced a slide. Against the
+older canonical mainline content, the site link check reports the missing home
+anchor `#what-you-get` and the browser suite stops at a 404 in its route list.
+The browser suite passed 63 audits against the newer release content. Complete
+the clean-clone update check before delivery. The parent workstream has the four incoming
+mail items and retains the Pagefind direction in W10.
+
+
 State: Delivered
 [Visual styling & dual-navigation upgrade](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md)
 on branch `website-retro-blueprint-styling-and-dual-nav`, ready for owner review,

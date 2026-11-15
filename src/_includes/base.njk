@@ -37,6 +37,7 @@
     <nav aria-label="Main navigation">
       <a href="{{ site.current.url | url }}" {% if entry.kind == 'doc' or page.url == '/docs/' %}aria-current="true"{% endif %}>Docs</a>
       <a class="nav-start" href="{{ site.roles['getting-started'] | url }}">Start here</a>
+      <a href="{{ '/presentations/' | url }}">Presentations</a>
       <a href="{{ '/journal/' | url }}" {% if entry.kind == 'post' or page.url == '/journal/' %}aria-current="true"{% endif %}>Journal</a>
       <a href="{{ '/releases/' | url }}" {% if entry.kind == 'release' or page.url == '/releases/' %}aria-current="true"{% endif %}>Releases</a>
       <a class="github-link" href="https://github.com/mycodespace-ai/devcapsule" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>

@@ -1058,6 +1058,7 @@ export function buildContent() {
         { url: "/journal/", lastmod: posts[0]?.lastmod, indexable: production },
         { url: "/docs/", indexable: production },
         { url: "/releases/", lastmod: releases[0]?.lastmod, indexable: production },
+        { url: "/presentations/", indexable: production },
         ...pages,
       ],
       mode,

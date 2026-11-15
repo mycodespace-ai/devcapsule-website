@@ -2994,3 +2994,6 @@ main:focus {
     color: black;
   }
 }
+
+.presentation-page iframe { display: block; width: 100%; height: 1100px; border: 0; }
+

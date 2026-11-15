@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { buildContent, siteUrl, prefix, pageIdentity } from "./scripts/content.mjs";
 export default function (config) {
   const site = buildContent();
@@ -23,6 +25,13 @@ export default function (config) {
   config.addFilter("json", (value) => JSON.stringify(value, null, 2));
   config.addPassthroughCopy({ "src/assets": "assets" });
   config.addPassthroughCopy({ "src/static": "." });
+  const presentationRoot = path.join(site.contentDir, "devcapsule-webconsole/resources/presentations");
+  const folders = fs.existsSync(presentationRoot) ? fs.readdirSync(presentationRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^[a-zA-Z0-9_-]+$/.test(entry.name) && fs.existsSync(path.join(presentationRoot, entry.name, "presentation.json")))
+    .map((entry) => entry.name).sort() : [];
+  config.addGlobalData("presentationFolders", folders);
+  for (const folder of folders)
+    config.addPassthroughCopy({ [path.join(presentationRoot, folder)]: `assets/presentations/${folder}` });
   // Images referenced by content, keyed by the source they were read from:
   // "main" for the checkout, the short commit for an immutable version source.
   for (const [key, { tree, files }] of Object.entries(site.versionAssets))

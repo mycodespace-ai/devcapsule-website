@@ -109,6 +109,16 @@ fragments, image labels, document structure, revision metadata, and that
 `sitemap.xml` lists exactly the indexable pages (none in a preview build). Production
 configuration and publication are described in [PUBLISHING.md](PUBLISHING.md).
 
+## Presentations
+
+The site lists recorded scenarios from `devcapsule-webconsole/resources/presentations/`
+in the content checkout. Each immediate directory with a `presentation.json`
+and an alphanumeric, hyphen or underscore name is copied with its media to the
+static site. The format is documented in the content repository's
+`devcapsule-webconsole/PRESENTATIONS.md`. The viewer is adapted from the console
+and must be updated when that viewer's behavior changes. Visitors need JavaScript
+to use the slides and video controls.
+
 ## Content contract
 
 [CONTRACT.md](CONTRACT.md) is the accepted content–website contract, version 1

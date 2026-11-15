@@ -280,6 +280,8 @@ implied by recording these tasks.
 
 ### W10 — P3: Help readers find answers and follow the journal
 
+- Owner direction via project-management, 2026-10-10: if search uses Pagefind, pin it as a website build dependency; do not rely on a DevCapsule component or `/opt/xtras`. This does not select search for implementation.
+
 - [ ] Scope lightweight documentation search/topic navigation and an RSS/Atom feed.
 - Evidence: sidebar/toc navigation exists, but there is no site-wide search or
   journal subscription link/template; live feed.xml returns 404. These are

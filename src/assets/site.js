@@ -98,3 +98,20 @@ for (const link of document.querySelectorAll('.hero-actions a[href^="#"]')) {
     if (video) video.focus({ preventScroll: true });
   });
 }
+
+window.addEventListener('message', (event) => {
+  const frame = document.querySelector('.presentation-page iframe');
+  if (event.origin !== location.origin || !frame || event.source !== frame.contentWindow) return;
+  const height = event.data?.presentationHeight;
+  if (Number.isFinite(height) && height > 0 && height < 20000) frame.style.height = `${height}px`;
+});
+
+const presentationFrame = document.querySelector('.presentation-page iframe');
+if (presentationFrame) {
+  presentationFrame.src += location.search + location.hash;
+  window.addEventListener('message', (event) => {
+    if (event.origin !== location.origin || event.source !== presentationFrame.contentWindow) return;
+    if (typeof event.data?.presentationLocation === 'string')
+      history.replaceState(null, '', location.pathname + event.data.presentationLocation);
+  });
+}
