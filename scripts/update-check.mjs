@@ -50,7 +50,7 @@ try {
   const marker = "Website acceptance paragraph update.";
   fs.writeFileSync(
     readme,
-    original.replace("Gone are the days", marker + " Gone are the days"),
+    original.replace(/(<!-- website:hero -->\s*##[^\n]*\n)/, "$1\n" + marker + "\n"),
   );
   build();
   assert.ok(read("index.html").includes(marker) || read("why/index.html").includes(marker));
