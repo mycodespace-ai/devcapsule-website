@@ -13,10 +13,10 @@ website copy must be kept in sync when the console viewer changes.
 
 Validation so far: the website's 23 unit tests and content contract passed;
 the site builds and its link check passes against the release checkout. A desktop
-and mobile Chromium check opened the example and advanced a slide. Against the
-older canonical mainline content, the site link check reports the missing home
-anchor `#what-you-get` and the browser suite stops at a 404 in its route list.
-The browser suite passed 63 audits against the newer release content. The
+and mobile Chromium check opened the example and advanced a slide. An initial build used the old fork’s relocation-only README and failed its
+link check; restoring the canonical upstream README made the build, link
+check, and content contract pass. The browser suite passed 63 audits against
+the release checkout, which has the same landing content. The
 clean-clone update check passed after replacing its stale README wording with
 the stable hero marker. The parent workstream has the four incoming
 mail items and retains the Pagefind direction in W10.
