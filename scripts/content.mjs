@@ -1,3 +1,4 @@
+import { presentationPages } from "./presentations.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
@@ -707,6 +708,20 @@ export function buildContent() {
   const site = landing(home, roles, rolePages);
   site.social = resolveSocial(site.social, "README.md", unversionedContext);
   const homeDescription = load(site.hero.lead, null, false).text().replace(/\s+/g, " ").trim() || home.description;
+  const presentations = presentationPages(dir, assets, production);
+  const [featured] = presentations;
+  if (featured) {
+    site.demo = {
+      id: site.demo?.id || "session-demo",
+      heading: featured.title,
+      alt: featured.title,
+      video: siteUrl(featured.videoUrl),
+      poster: siteUrl(featured.social.image),
+      captions: featured.url + "captions.vtt",
+      walkthrough: featured.url,
+      stepCount: featured.doc.steps.length,
+    };
+  }
   const pages = [
     {
       ...home,
@@ -721,6 +736,7 @@ export function buildContent() {
       sourceUrl: `${repository}/blob/${content.revision}/README.md`,
       landing: site,
     },
+    ...presentations,
   ];
   if (site.why || site.comparison)
     pages.push({
@@ -1041,6 +1057,7 @@ export function buildContent() {
   };
   return {
     pages,
+    presentations,
     posts,
     releases: releases.map(({ html, toc, ...r }) => r),
     currentRelease: currentRelease ? { tag: currentRelease.tag, version: currentRelease.version, released: currentRelease.released, releasedLabel: currentRelease.releasedLabel, url: currentRelease.url, description: currentRelease.description } : null,

@@ -33,6 +33,36 @@ try {
     const page = await context.newPage();
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
+    await page.goto(base);
+    const player = page.locator(".workspace-figure--video");
+    const walkthrough = player.getByRole("link", { name: /^Step-by-step walkthrough/ });
+    if (await walkthrough.count()) {
+      const href = await walkthrough.getAttribute("href");
+      const recording = await player.locator(".workspace-video-frame source").getAttribute("src");
+      const poster = await player.locator(".workspace-video-frame video").getAttribute("poster");
+      await player.getByRole("button", { name: /Expand/ }).click();
+      const dialog = player.getByRole("dialog");
+      assert.equal(await dialog.getByRole("link", { name: /step-by-step walkthrough/ }).getAttribute("href"), href);
+      assert.equal(await dialog.locator("source").getAttribute("src"), recording);
+      await dialog.getByRole("button", { name: /Close/ }).click();
+      await walkthrough.click();
+      await page.locator(".deck").waitFor();
+      assert.equal(await page.locator(".presentation video").getAttribute("src"), recording);
+      assert.equal(await page.locator(".still").getAttribute("src"), poster);
+      await page.locator(".outline button").last().click();
+      const image = page.locator(".presentation .still");
+      await image.evaluate(node => node.decode());
+      await page.locator(".moment").last().click();
+      await page.waitForFunction(() => {
+        const video = document.querySelector(".presentation video");
+        return video.currentTime > 0 && !video.paused && !video.seeking;
+      });
+      await page.getByRole("button", { name: /Replay this step/ }).first().waitFor();
+      await page.keyboard.press("Home");
+      assert.equal(new URL(page.url()).hash, "#overview");
+      const relative = new URL(href, base).pathname.slice(new URL(base).pathname.length);
+      if (!routes.includes(relative)) routes.push(relative);
+    }
     for (const route of routes) {
       const response = await page.goto(new URL(route, base).href, {
         waitUntil: "networkidle",

@@ -1,3 +1,4 @@
+import { selectedFolders } from "./presentations.mjs";
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
@@ -10,6 +11,9 @@ const mime = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".webm": "video/webm",
+  ".mp4": "video/mp4",
+  ".vtt": "text/vtt",
   ".svg": "image/svg+xml",
   ".png": "image/png",
   ".jpg": "image/jpeg",
@@ -47,12 +51,34 @@ const server = http.createServer((req, res) => {
     }
     const exists = fs.existsSync(file) && fs.statSync(file).isFile();
     if (!exists) file = path.join(output, "404.html");
-    res.writeHead(exists ? 200 : 404, {
+    const headers = {
       "Content-Type": mime[path.extname(file)] || "application/octet-stream",
       "Cache-Control": "no-store",
       "X-Robots-Tag": "noindex, nofollow",
-    });
-    fs.createReadStream(file)
+    };
+    const size = fs.statSync(file).size;
+    let range;
+    if (exists && headers["Content-Type"].startsWith("video/")) {
+      headers["Accept-Ranges"] = "bytes";
+      const match = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || "");
+      if (match && (match[1] || match[2])) {
+        const start = match[1] ? Number(match[1]) : Math.max(0, size - Number(match[2]));
+        const end = match[1] && match[2] ? Math.min(size - 1, Number(match[2])) : size - 1;
+        if (start > end) {
+          res.writeHead(416, { ...headers, "Content-Range": "bytes */" + size });
+          res.end();
+          return;
+        }
+        range = { start, end };
+        headers["Content-Range"] = `bytes ${start}-${end}/${size}`;
+      }
+    }
+    headers["Content-Length"] = range ? range.end - range.start + 1 : size;
+    res.writeHead(range ? 206 : exists ? 200 : 404, headers);
+    if (req.method === "HEAD") return res.end();
+    const stream = fs.createReadStream(file, range);
+    res.on("close", () => stream.destroy());
+    stream
       .on("error", () => res.end())
       .pipe(res);
   } catch {
@@ -81,6 +107,10 @@ if (process.argv.includes("--watch")) {
       path.join(dir, "README.md"),
       ...walk(path.join(dir, "docs")),
       ...walk(path.join(dir, "engineering-docs/blog")),
+      ...selectedFolders.flatMap(folder => {
+        const full = path.join(dir, folder);
+        return fs.existsSync(full) ? walk(full) : [];
+      }),
       ...walk(path.join(root, "src")),
       ...walk(path.join(root, "scripts")),
       path.join(root, "eleventy.config.js"),

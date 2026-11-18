@@ -1,0 +1,11 @@
+<div class="presentation wrap">
+  <div class="breadcrumbs"><a href="{{ '/' | url }}">Home</a><span>/</span><span>Recorded walkthrough</span></div>
+  <div data-presentation-media="{{ entry.media | url }}">
+    <h1>{{ entry.title }}</h1>
+    <p>{{ entry.description }}</p>
+    <ol>{% for step in entry.doc.steps %}
+      <li><strong>{{ step.title }}</strong><p>{{ step.action }}</p><p>{{ step.expected }}</p></li>
+    {% endfor %}</ol>
+  </div>
+  <p><a class="text-link" href="{{ entry.videoUrl | url }}">Open the full recording (WebM)</a></p>
+</div>

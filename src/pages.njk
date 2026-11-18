@@ -10,6 +10,8 @@ eleventyComputed:
 ---
 {% if entry.kind == 'home' %}
   {% include 'home.njk' %}
+{% elif entry.kind == 'presentation' %}
+  {% include 'presentation.njk' %}
 {% elif entry.kind == 'alias' %}
 {% elif entry.kind == 'release' %}
 <div class="reading-layout journal-layout">

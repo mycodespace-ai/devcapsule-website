@@ -1,0 +1,8 @@
+---
+pagination:
+  data: site.presentations
+  size: 1
+  alias: show
+permalink: "{{ show.url }}captions.vtt"
+---
+{{ show.doc.steps | captionTrack | safe -}}

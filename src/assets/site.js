@@ -73,7 +73,7 @@ for (const btn of document.querySelectorAll('[data-video-expand]')) {
   if (!dialog || typeof dialog.showModal !== 'function') continue;
   btn.hidden = false;
   const inlineVideo = btn.closest('.workspace-figure--video')?.querySelector('.workspace-video');
-  const modalVideo = dialog.querySelector('.workspace-video--modal');
+  const modalVideo = dialog.querySelector('.video-modal-video');
   btn.addEventListener('click', () => {
     if (inlineVideo && !inlineVideo.paused) inlineVideo.pause();
     if (modalVideo && inlineVideo && inlineVideo.currentTime > 0) {
