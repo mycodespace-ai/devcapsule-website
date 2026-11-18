@@ -43,7 +43,7 @@
         </video>
       </div>
       {% if landing.demo.walkthrough %}
-      <p class="workspace-video-caption"><a class="text-link" href="{{ landing.demo.walkthrough | url }}">Step-by-step walkthrough ({{ landing.demo.stepCount }} steps) <span aria-hidden="true">→</span></a></p>
+      <p class="workspace-video-caption"><a href="{{ landing.demo.walkthrough | url }}">Step-by-step walkthrough ({{ landing.demo.stepCount }} steps) <span aria-hidden="true">→</span></a></p>
       {% endif %}
       {% if landing.demo.caption %}
       <div class="workspace-video-caption prose">{{ landing.demo.caption | safe }}</div>
