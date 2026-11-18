@@ -15,7 +15,9 @@
         {% endif %}
       </div>
       {% for show in site.presentations %}
-      <p><a class="text-link" href="{{ show.url | url }}">Step-by-step walkthrough · {{ show.title }}</a></p>
+        {% if show.url != landing.demo.walkthrough %}
+        <p><a class="text-link" href="{{ show.url | url }}">Step-by-step walkthrough · {{ show.title }}</a></p>
+        {% endif %}
       {% endfor %}
     </div>
     {% if landing.demo %}
@@ -35,11 +37,14 @@
           poster="{{ landing.demo.poster }}"
           aria-label="{{ landing.demo.alt }}"
         >
-          <source src="{{ landing.demo.video }}" type="video/webm">
-          <track kind="captions" src="{{ '/assets/session-demo.vtt' | url }}" srclang="en" label="English" default>
-          <p><a href="{{ landing.demo.video }}">Download the session recording (WebM)</a>.</p>
+          <source src="{{ landing.demo.video }}">
+          <track kind="captions" src="{{ (landing.demo.captions or '/assets/session-demo.vtt') | url }}" srclang="en" label="English" default>
+          <p><a href="{{ landing.demo.video }}">Download the session recording</a>.</p>
         </video>
       </div>
+      {% if landing.demo.walkthrough %}
+      <p class="workspace-video-caption"><a class="text-link" href="{{ landing.demo.walkthrough | url }}">Step-by-step walkthrough ({{ landing.demo.stepCount }} steps) <span aria-hidden="true">→</span></a></p>
+      {% endif %}
       {% if landing.demo.caption %}
       <div class="workspace-video-caption prose">{{ landing.demo.caption | safe }}</div>
       {% endif %}
@@ -69,9 +74,12 @@
             poster="{{ landing.demo.poster }}"
             aria-label="{{ landing.demo.alt }}"
           >
-            <source src="{{ landing.demo.video }}" type="video/webm">
-            <track kind="captions" src="{{ '/assets/session-demo.vtt' | url }}" srclang="en" label="English" default>
+            <source src="{{ landing.demo.video }}">
+            <track kind="captions" src="{{ (landing.demo.captions or '/assets/session-demo.vtt') | url }}" srclang="en" label="English" default>
           </video>
+          {% if landing.demo.walkthrough %}
+          <p><a href="{{ landing.demo.walkthrough | url }}">Open the step-by-step walkthrough <span aria-hidden="true">→</span></a></p>
+          {% endif %}
           {% if landing.demo.caption %}
           <div class="video-modal-caption prose">{{ landing.demo.caption | safe }}</div>
           {% endif %}

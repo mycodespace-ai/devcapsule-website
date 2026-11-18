@@ -709,6 +709,19 @@ export function buildContent() {
   site.social = resolveSocial(site.social, "README.md", unversionedContext);
   const homeDescription = load(site.hero.lead, null, false).text().replace(/\s+/g, " ").trim() || home.description;
   const presentations = presentationPages(dir, assets, production);
+  const [featured] = presentations;
+  if (featured) {
+    site.demo = {
+      id: site.demo?.id || "session-demo",
+      heading: featured.title,
+      alt: featured.title,
+      video: siteUrl(featured.videoUrl),
+      poster: siteUrl(featured.social.image),
+      captions: featured.url + "captions.vtt",
+      walkthrough: featured.url,
+      stepCount: featured.doc.steps.length,
+    };
+  }
   const pages = [
     {
       ...home,

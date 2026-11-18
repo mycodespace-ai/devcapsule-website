@@ -376,7 +376,9 @@ Recorded so that version 2 starts from what is actually implemented:
     folders in `scripts/presentations.mjs`. Each supplies the DevCapsule
     console’s version 1 `presentation.json`, recording, poster and step
     screenshots. Builds copy the manifest and the files it references.
-    Content revisions predating a selected folder omit its page and link.
+    The first available selection supplies the homepage video, poster and
+    timed caption track. The inline and expanded players link to its walkthrough.
+    Content revisions predating all selections use the README demo.
 
 ## 9. Acceptance
 

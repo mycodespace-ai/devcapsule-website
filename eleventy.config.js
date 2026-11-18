@@ -1,10 +1,12 @@
 import { buildContent, siteUrl, prefix, pageIdentity } from "./scripts/content.mjs";
+import { captionTrack } from "./scripts/presentations.mjs";
 export default function (config) {
   const site = buildContent();
   config.addGlobalData("site", site);
   config.addGlobalData("preview", site.manifest.mode !== "production");
   config.addGlobalData("origin", process.env.SITE_ORIGIN || "");
   config.addFilter("url", siteUrl);
+  config.addFilter("captionTrack", captionTrack);
   config.addFilter("identity", (entry, title, description, url, origin) =>
     pageIdentity(entry ?? { title, description, url }, origin),
   );

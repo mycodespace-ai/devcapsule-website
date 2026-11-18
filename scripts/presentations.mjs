@@ -86,3 +86,21 @@ export function presentationPages(dir, assets, production) {
   }
   return pages;
 }
+
+function cueTime(seconds) {
+  const millis = Math.round(seconds * 1000);
+  const hours = Math.floor(millis / 3600000);
+  const minutes = Math.floor(millis / 60000) % 60;
+  const secs = Math.floor(millis / 1000) % 60;
+  return [hours, minutes, secs].map(n => String(n).padStart(2, "0")).join(":")
+    + "." + String(millis % 1000).padStart(3, "0");
+}
+
+export function captionTrack(steps) {
+  const cues = steps.flatMap(step => step.captions).map(({ start, end, text }) => {
+    const plain = text.replace(/(``|`|\*\*|\*)(.+?)\1/g, (_, mark, value) => value.trim())
+      .replace(/\s+/g, " ").trim().replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+    return cueTime(start) + " --> " + cueTime(end) + "\n" + plain;
+  });
+  return "WEBVTT\n\n" + cues.join("\n\n") + "\n";
+}

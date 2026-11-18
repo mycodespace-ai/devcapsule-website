@@ -9,8 +9,10 @@ the retained console sample directly from the DevCapsule content checkout.
 
 Chromium played each segment to its boundary and played all seven in sequence.
 Desktop and mobile inspection covered slide text, screenshots and controls.
-The full recording also opens from the static step transcript. Owner review
-of the local preview is next. The earlier styling delivery remains pending.
+The owner accepted the walkthrough preview and requested website PR delivery.
+The homepage now features the same recording, with captions derived from the
+presentation and a link below the inline and expanded players. Earlier styling
+reached website main through PR #12. The website PR is next for owner review.
 
 State: Delivered
 [Visual styling & dual-navigation upgrade](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md)
