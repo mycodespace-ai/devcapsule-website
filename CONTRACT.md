@@ -371,6 +371,12 @@ Recorded so that version 2 starts from what is actually implemented:
 12. `website:demo` and `website:continuity` landing section markers, multiple
     explanatory paragraphs in `website:hero`, and self-hosted `.webm`/`.mp4`
     media assets under `/content-assets/<key>/…` (3.7, 5.1, 5.5), additive.
+13. The homepage links to selected recorded walkthroughs at
+    `/presentations/<folder-name>/`. The website selects content-relative
+    folders in `scripts/presentations.mjs`. Each supplies the DevCapsule
+    console’s version 1 `presentation.json`, recording, poster and step
+    screenshots. Builds copy the manifest and the files it references.
+    Content revisions predating a selected folder omit its page and link.
 
 ## 9. Acceptance
 

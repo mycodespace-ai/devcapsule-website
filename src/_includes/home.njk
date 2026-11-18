@@ -14,6 +14,9 @@
         <a class="text-link" href="#what-you-get">See what you get ↓</a>
         {% endif %}
       </div>
+      {% for show in site.presentations %}
+      <p><a class="text-link" href="{{ show.url | url }}">Step-by-step walkthrough · {{ show.title }}</a></p>
+      {% endfor %}
     </div>
     {% if landing.demo %}
     <div class="workspace-figure workspace-figure--video" id="{{ landing.demo.id }}" role="region" aria-labelledby="{{ landing.demo.id }}-title">

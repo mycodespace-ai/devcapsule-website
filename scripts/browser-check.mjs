@@ -33,6 +33,25 @@ try {
     const page = await context.newPage();
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
+    await page.goto(base);
+    const walkthrough = page.getByRole("link", { name: /^Step-by-step walkthrough/ }).first();
+    if (await walkthrough.count()) {
+      const href = await walkthrough.getAttribute("href");
+      await walkthrough.click();
+      await page.locator(".outline button").last().click();
+      const image = page.locator(".presentation .still");
+      await image.evaluate(node => node.decode());
+      await page.locator(".moment").last().click();
+      await page.waitForFunction(() => {
+        const video = document.querySelector(".presentation video");
+        return video.currentTime > 0 && !video.paused && !video.seeking;
+      });
+      await page.getByRole("button", { name: /Replay this step/ }).first().waitFor();
+      await page.keyboard.press("Home");
+      assert.equal(new URL(page.url()).hash, "#overview");
+      const relative = new URL(href, base).pathname.slice(new URL(base).pathname.length);
+      if (!routes.includes(relative)) routes.push(relative);
+    }
     for (const route of routes) {
       const response = await page.goto(new URL(route, base).href, {
         waitUntil: "networkidle",

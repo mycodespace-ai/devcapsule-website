@@ -1,5 +1,17 @@
 # Website current status
 
+## Selected E2E presentations in local preview (2026-11-18)
+
+The homepage links to the seven-step FastAPI, PostgreSQL and React walkthrough
+under `/presentations/todo-fastapi-postgres-react/`. Selection and build inputs
+are described in [CONTRACT.md](CONTRACT.md). The independent website consumes
+the retained console sample directly from the DevCapsule content checkout.
+
+Chromium played each segment to its boundary and played all seven in sequence.
+Desktop and mobile inspection covered slide text, screenshots and controls.
+The full recording also opens from the static step transcript. Owner review
+of the local preview is next. The earlier styling delivery remains pending.
+
 State: Delivered
 [Visual styling & dual-navigation upgrade](engineering-docs/work-orders/2026-11-12-retro-blueprint-styling-and-dual-nav.md)
 on branch `website-retro-blueprint-styling-and-dual-nav`, ready for owner review,
