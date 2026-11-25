@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
           cache: npm
@@ -35,7 +35,7 @@ jobs:
           CANDIDATE_TAG: ${{ inputs.candidate_tag }}
         run: node scripts/candidate.mjs download
       - run: npm run check
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
@@ -51,4 +51,4 @@ jobs:
     steps:
       - name: Publish to devcapsule.mycodespace.ai
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
